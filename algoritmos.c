@@ -76,15 +76,19 @@ void insert(int a[], int size){
 }
 
 void bubble_sent(int a[], int size){
-	int i,j=0,troca,tmp;
+	int i,j=0,troca,tmp,sent;
 	do{
 		troca=0;
-		for(i=0;i<size-j-1;i++){
+		sent=0;
+		for(i=sent;i<size-j-1;i++){
 			if(a[i]>a[i+1]){
 				tmp=a[i+1];
 				a[i+1]=a[i];
 				a[i]=tmp;
 				troca++;
+				if(troca==1){
+					sent=i;
+				}
 			}
 		}
 		j++;
