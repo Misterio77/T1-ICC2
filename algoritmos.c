@@ -95,16 +95,51 @@ void bubble_sent(int a[], int size){
 	}while(troca!=0 || j<size-1);
 	return;
 }
-/*
+
+ void merge(int a[], int l, int m, int r){
+    int *tmpl, *tmpr, i, j, k;
+    int n1=m-l+1;
+    int n2=r-m;
+    tmpl=(int*)malloc(sizeof(int)*((m-l)+1));
+    tmpr=(int*)malloc(sizeof(int)*(r-m));
+    for(i=0;i<n1;i++){
+        tmpl[i]=a[l+i];
+    }
+    for(i=0;i<n2;i++){
+        tmpr[i]=a[m+1+i];
+    }
+    i=0;j=0;k=l;
+    while(i<n1 && j<n2){
+        if(tmpl[i]<=tmpr[j]){
+            a[k]=tmpl[i];
+            i++;
+        }
+        else{
+            a[k]=tmpr[j];
+            j++;
+        }
+        k++;
+    }
+    while(i<n1){
+        a[k]=tmpl[i];
+        i++;
+        k++;
+    }
+    while(j<n2){
+        a[k]=tmpr[j];
+        i++;
+        j++;
+    }
+    return;
+}
+
 void merge_sort(int a[], int l, int r){
 	int m =(l+r)/2;
-	if(m == l){
+	if(l == r){
 		return;
 	}
 	merge_sort(a, l, m);
 	merge_sort(a, m+1, r);
-	merge();
+	merge(a,l,m,r);
 	return;
 }
-
-void merge*/
