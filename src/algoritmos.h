@@ -3,6 +3,7 @@
 
 void bubble(int a[], int size);
 void cocktail(int a[], int size);
+void selection(int a[], int size);
 //=====
 void insert(int a[], int size);
 void bubble_sent(int a[], int size);

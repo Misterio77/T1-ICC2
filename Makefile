@@ -12,4 +12,4 @@ main.o: src/main.c src/algoritmos.h
 clean:
 	rm -f *.o
 mrproper: clean
-rm -f T1-ICC2
+	rm -f T1-ICC2

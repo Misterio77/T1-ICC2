@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "algoritmos.h"
+
 void init(int a[], int n, int step, int range) {
         int i;
         for (i = 0; i < n; i++) {
@@ -23,5 +25,6 @@ int main(){
 	for(i=0; i < size; i++){
 		printf("%d ",a[i]);
 	}
+	printf("\n");
 	return (0);
 }

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "algoritmos.h"
+
 void bubble(int a[], int size) {
 	int i, tmp, swapped;
 	
