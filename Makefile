@@ -10,6 +10,4 @@ main.o: src/main.c src/algoritmos.h
 	gcc -o main.o -c src/main.c -g -Wall
 
 clean:
-	rm -f *.o
-mrproper: clean
-	rm -f T1-ICC2
+	rm -f *.o T1-ICC2
