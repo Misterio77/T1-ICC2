@@ -3,7 +3,7 @@
 
 #include "algoritmos.h"
 
-void bubble(int a[], int size) {
+void bubble_sort(int a[], int size) {
 	int i, tmp, swapped;
 	
 	do {
@@ -18,7 +18,7 @@ void bubble(int a[], int size) {
 	} while (swapped); //Enquanto trocas tenham sido feitas
 }
 
-void cocktail(int a[], int size) {
+void cocktail_sort(int a[], int size) {
 	int i, tmp, swapped;
 	
 	do {
@@ -45,7 +45,7 @@ void cocktail(int a[], int size) {
 	} while (swapped); //Enquanto trocas tenham sido feitas
 }
 
-void selection(int a[], int size) {
+void selection_sort(int a[], int size) {
 	int i, j, min, tmp;
 	
 	for (j = 0; j < size - 1; j++) {
@@ -60,6 +60,8 @@ void selection(int a[], int size) {
 		}
 	}
 }
+
+//void heap_sort(int a[], int size) {}
 
 //=====
 
