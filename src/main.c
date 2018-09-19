@@ -20,7 +20,7 @@ int main(){
 	a = (int*)malloc(sizeof(int)*size);
 	
 	init(a, size, 0, 5 * size);
-	selection(a, size);
+	selection_sort(a, size);
 	
 	for(i=0; i < size; i++){
 		printf("%d ",a[i]);
