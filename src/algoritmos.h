@@ -1,7 +1,7 @@
 #ifndef ALGORITMOS_H_
 #define ALGORITMOS_H_
 
-void troca(int *a, int *b)
+void troca(int *a, int *b);
 void bubble_sort(int a[], int size);
 void cocktail_sort(int a[], int size);
 void selection_sort(int a[], int size);
