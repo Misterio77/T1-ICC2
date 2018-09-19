@@ -88,7 +88,13 @@ void selection_sort(int a[], int size) {
 }
 
 void heap_sort(int a[], int size) {
+	int cont;
 	
+	for (cont = size/2 - 1; cont >= 0; cont--) heapify(a, size, cont);
+	for (cont = size   - 1; cont >= 0; cont--) {
+		troca(&a[0], &a[cont]);
+		heapify(a, cont, 0);
+	}
 }
 
 //=====
