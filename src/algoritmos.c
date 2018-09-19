@@ -11,6 +11,24 @@ void troca(int *a, int *b){
 	return;
 }
 
+void heapify(int a[], int size, int root) {
+	int f1 = 2*root + 1,
+	    f2 = 2*root + 2,
+	    maior = root;
+	
+	//Caso o filho um seja maior
+	if (a[f1] > a[maior] && f1 < size) maior = f1;
+	//Caso o filho dois seja maior
+	if (a[f2] > a[maior] && f2 < size) maior = f2;
+	
+	//Caso o maior n seja a raiz
+	if (maior != root) {
+		troca(&a[root], &a[maior]);
+		heapify(a, size, maior);
+	}
+	
+}
+
 void bubble_sort(int a[], int size) {
 	int i, tmp, swapped;
 	
@@ -69,7 +87,9 @@ void selection_sort(int a[], int size) {
 	}
 }
 
-//void heap_sort(int a[], int size) {}
+void heap_sort(int a[], int size) {
+	
+}
 
 //=====
 
