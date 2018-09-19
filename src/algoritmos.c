@@ -4,11 +4,11 @@
 #include "algoritmos.h"
 
 void troca(int *a, int *b){
-    int tmp;
-    tmp=*a;
-    *a=*b;
-    *b=tmp;
-    return;
+	int tmp;
+	tmp=*a;
+	*a=*b;
+	*b=tmp;
+	return;
 }
 
 void bubble_sort(int a[], int size) {
@@ -109,40 +109,40 @@ void bubble_sent(int a[], int size){
 }
 
 void merge(int a[], int l, int m, int r){
-    int *tmpl, *tmpr, i, j, k;
-    int n1=m-l+1;
-    int n2=r-m;
-    tmpl=(int*)malloc(sizeof(int)*((m-l)+1));
-    tmpr=(int*)malloc(sizeof(int)*(r-m));
-    for(i=0;i<n1;i++){
-        tmpl[i]=a[l+i];
-    }
-    for(i=0;i<n2;i++){
-        tmpr[i]=a[m+1+i];
-    }
-    i=0;j=0;k=l;
-    while(i<n1 && j<n2){
-        if(tmpl[i]<=tmpr[j]){
-            a[k]=tmpl[i];
-            i++;
-        }
-        else{
-            a[k]=tmpr[j];
-            j++;
-        }
-        k++;
-    }
-    while(i<n1){
-        a[k]=tmpl[i];
-        i++;
-        k++;
-    }
-    while(j<n2){
-        a[k]=tmpr[j];
-        i++;
-        j++;
-    }
-    return;
+	int *tmpl, *tmpr, i, j, k;
+	int n1=m-l+1;
+	int n2=r-m;
+	tmpl=(int*)malloc(sizeof(int)*((m-l)+1));
+	tmpr=(int*)malloc(sizeof(int)*(r-m));
+	for(i=0;i<n1;i++){
+		tmpl[i]=a[l+i];
+	}
+	for(i=0;i<n2;i++){
+		tmpr[i]=a[m+1+i];
+	}
+	i=0;j=0;k=l;
+	while(i<n1 && j<n2){
+		if(tmpl[i]<=tmpr[j]){
+			a[k]=tmpl[i];
+			i++;
+		}
+		else{
+			a[k]=tmpr[j];
+			j++;
+		}
+		k++;
+	}
+	while(i<n1){
+		a[k]=tmpl[i];
+		i++;
+		k++;
+	}
+	while(j<n2){
+		a[k]=tmpr[j];
+		i++;
+		j++;
+	}
+	return;
 }
 
 void merge_sort(int a[], int l, int r){
@@ -157,28 +157,28 @@ void merge_sort(int a[], int l, int r){
 }
 
 void quick(int a[], int inicio, int fim){
-    int i,j,k,pivot;
-    if(inicio>=fim){
-        return;
-    }
-    pivot=rand()%(fim-inicio) + inicio;
-    k=a[pivot];
-    i=inicio;
-    j=fim-1;
-    troca(&a[fim],&a[pivot]);
-    pivot=fim;
-    printf("%d\n", a[pivot]);
-    while(i<j){
-        while(i<j && a[i]<k){
-            i++;
-        }
-        while(j>i && a[j]>=k){
-            j--;
-        }
-        troca(&a[i],&a[j]);
-    }
-    troca(&a[i],&a[pivot]);
-    quick(a, inicio, i-1);
-    quick(a, i+1, fim);
-    return;
+	int i,j,k,pivot;
+	if(inicio>=fim){
+		return;
+	}
+	pivot=rand()%(fim-inicio) + inicio;
+	k=a[pivot];
+	i=inicio;
+	j=fim-1;
+	troca(&a[fim],&a[pivot]);
+	pivot=fim;
+	printf("%d\n", a[pivot]);
+	while(i<j){
+		while(i<j && a[i]<k){
+			i++;
+		}
+		while(j>i && a[j]>=k){
+			j--;
+		}
+		troca(&a[i],&a[j]);
+	}
+	troca(&a[i],&a[pivot]);
+	quick(a, inicio, i-1);
+	quick(a, i+1, fim);
+	return;
 }
