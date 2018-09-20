@@ -14,5 +14,6 @@ void insert(int a[], int size);
 void bubble_sent(int a[], int size);
 void merge(int a[], int l, int m, int r);
 void merge_sort(int a[], int l, int r);
+void quick(int a[], int inicio, int fim);
 
 #endif
