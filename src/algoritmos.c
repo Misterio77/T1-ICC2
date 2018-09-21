@@ -8,6 +8,7 @@ void troca(int *a, int *b){
 	tmp=*a;
 	*a=*b;
 	*b=tmp;
+	atrib += 3;
 	return;
 }
 
@@ -103,26 +104,31 @@ void insert(int a[], int size){
 	int i,j,p;
 	for(i=1; i<size ;i++){
 		p=a[i];
+		atrib++;
 		j=i-1;
 		while(j>=0 && a[j]>p){
+			comp++;
+			atrib++;
 			a[j+1]=a[j];
 			j--;
 		}
 		a[j+1]=p;
+		atrib++;
 	}
 	return;
 }
 
 void bubble_sent(int a[], int size){
-	int i,j=0,troca,tmp,sent;
+	int i,j=0,troca,tmp,sent=0;
 	do{
 		troca=0;
-		sent=0;
 		for(i=sent;i<size-j-1;i++){
+			comp++;
 			if(a[i]>a[i+1]){
 				tmp=a[i+1];
 				a[i+1]=a[i];
 				a[i]=tmp;
+				atrib += 3;
 				troca++;
 				if(troca==1){
 					sent=i;
@@ -142,19 +148,24 @@ void merge(int a[], int l, int m, int r){
 	tmpr=(int*)malloc(sizeof(int)*(r-m));
 	for(i=0;i<n1;i++){
 		tmpl[i]=a[l+i];
+		atrib++;
 	}
 	for(i=0;i<n2;i++){
 		tmpr[i]=a[m+1+i];
+		atrib++;
 	}
 	i=0;j=0;k=l;
 	while(i<n1 && j<n2){
+		comp++;
 		if(tmpl[i]<=tmpr[j]){
 			a[k]=tmpl[i];
 			i++;
+			atrib++;
 		}
 		else{
 			a[k]=tmpr[j];
 			j++;
+			atrib++;
 		}
 		k++;
 	}
@@ -162,11 +173,13 @@ void merge(int a[], int l, int m, int r){
 		a[k]=tmpl[i];
 		i++;
 		k++;
+		atrib++;
 	}
 	while(j<n2){
 		a[k]=tmpr[j];
 		i++;
 		j++;
+		atrib++;
 	}
 	return;
 }
@@ -189,16 +202,18 @@ void quick(int a[], int inicio, int fim){
 	}
 	pivot=rand()%(fim-inicio) + inicio;
 	k=a[pivot];
+	atrib++;
 	i=inicio;
 	j=fim-1;
 	troca(&a[fim],&a[pivot]);
 	pivot=fim;
-	printf("%d\n", a[pivot]);
 	while(i<j){
 		while(i<j && a[i]<k){
+			comp++;
 			i++;
 		}
 		while(j>i && a[j]>=k){
+			comp++;
 			j--;
 		}
 		troca(&a[i],&a[j]);
