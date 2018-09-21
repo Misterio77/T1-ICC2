@@ -3,6 +3,8 @@
 #include <math.h>
 #include "algoritmos.h"
 
+int comp=0, atrib=0;
+
 void init(int a[], int n, int step, int range) {
         int i;
         for (i = 0; i < n; i++) {
@@ -73,10 +75,6 @@ int main(){
 			quick(a, 0, size-1);
 			break;
 	}
-	
-	for(i=0; i < size; i++){
-		printf("%d ",a[i]);
-	}
-	printf("\n");
+	printf("\nnumero de atribuicoes: %d\nnumero de comparacoes: %d", atrib, comp);
 	return (0);
 }
