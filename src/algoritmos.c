@@ -140,86 +140,69 @@ void bubble_sent(int a[], int size){
 	return;
 }
 
-void merge(int a[], int l, int m, int r){
-	int *tmpl, *tmpr, i, j, k;
-	int n1=m-l+1;
-	int n2=r-m;
-	tmpl=(int*)malloc(sizeof(int)*((m-l)+1));
-	tmpr=(int*)malloc(sizeof(int)*(r-m));
-	for(i=0;i<n1;i++){
-		tmpl[i]=a[l+i];
-		atrib++;
-	}
-	for(i=0;i<n2;i++){
-		tmpr[i]=a[m+1+i];
-		atrib++;
-	}
-	i=0;j=0;k=l;
-	while(i<n1 && j<n2){
-		comp++;
-		if(tmpl[i]<=tmpr[j]){
-			a[k]=tmpl[i];
-			i++;
-			atrib++;
-		}
-		else{
-			a[k]=tmpr[j];
-			j++;
-			atrib++;
-		}
-		k++;
-	}
-	while(i<n1){
-		a[k]=tmpl[i];
-		i++;
-		k++;
-		atrib++;
-	}
-	while(j<n2){
-		a[k]=tmpr[j];
-		i++;
-		j++;
-		atrib++;
-	}
-	return;
+void quickSort(int a[], int low, int high){
+    int random,i,j,pivot;
+    if (low < high) { //enquanto o inicio for menor que o fim
+        random= low + rand() % (high - low); //escolhe um indice aleatorio
+        troca(&a[random],&a[high]);//joga ele pro fim do vetor
+        pivot = a[high];//defino ultimo elemento como pivo
+        i = (low - 1);
+        for (j = low; j <= high - 1; j++) { 
+            if (a[j] <= pivot) {//se o elemento j for menor q o pivo, joga pro comeco
+                i++;
+                troca(&a[i], &a[j]);
+            }
+        }
+        troca(&a[i+1],&a[high]); //joga o pivo pro fim da lista de menores que ele
+        quickSort(arr, low, i);//como o pivot eh o 1+1, chama recursivamente ate i e a partir de 1+2
+        quickSort(arr, i + 2, high);
+    }
 }
 
-void merge_sort(int a[], int l, int r){
-	int m =(l+r)/2;
-	if(l == r){
-		return;
-	}
-	merge_sort(a, l, m);
-	merge_sort(a, m+1, r);
-	merge(a,l,m,r);
-	return;
-}
+void merge(int a[], int l, int m, int r) { 
+    int i, j, k; 
+    int n1 = m-l+1; 
+    int n2 = r-m; 
+    int L[n1], R[n2]; 
+  
+    for (i = 0; i < n1; i++){
+        L[i] = a[l + i];
+    }
+    for (j = 0; j < n2; j++){
+        R[j] = arr[m + 1+ j]; 
+    }
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2){ 
+        if (L[i] <= R[j]){ 
+            a[k] = L[i]; 
+            i++; 
+        } 
+        else{ 
+            a[k] = R[j]; 
+            j++; 
+        } 
+        k++; 
+    } 
+    while (i < n1) { 
+        a[k] = L[i]; 
+        i++; 
+        k++; 
+    } 
+    while (j < n2){ 
+        a[k] = R[j]; 
+        j++; 
+        k++; 
+    } 
+} 
+  
 
-void quick(int a[], int inicio, int fim){
-	int i,j,k,pivot;
-	if(inicio>=fim){
-		return;
-	}
-	pivot=rand()%(fim-inicio) + inicio;
-	k=a[pivot];
-	atrib++;
-	i=inicio;
-	j=fim-1;
-	troca(&a[fim],&a[pivot]);
-	pivot=fim;
-	while(i<j){
-		while(i<j && a[i]<k){
-			comp++;
-			i++;
-		}
-		while(j>i && a[j]>=k){
-			comp++;
-			j--;
-		}
-		troca(&a[i],&a[j]);
-	}
-	troca(&a[i],&a[pivot]);
-	quick(a, inicio, i-1);
-	quick(a, i+1, fim);
-	return;
-}
+void mergeSort(int arr[], int l, int r) { 
+    if (l < r) { 
+        int m = l+(r-l)/2; 
+        mergeSort(arr, l, m); 
+        mergeSort(arr, m+1, r); 
+        merge(arr, l, m, r); 
+    } 
+} 
