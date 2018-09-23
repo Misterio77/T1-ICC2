@@ -193,7 +193,7 @@ void quick(int a[], int inicio, int fim){
 	j=fim-1;
 	troca(&a[fim],&a[pivot]);
 	pivot=fim;
-	printf("%d\n", a[pivot]);
+//	printf("%d\n", a[pivot]);
 	while(i<j){
 		while(i<j && a[i]<k){
 			i++;

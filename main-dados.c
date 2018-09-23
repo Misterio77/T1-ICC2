@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "algoritmos.h"
 
 unsigned long long int comp=0, atrib=0;
 
@@ -14,62 +13,43 @@ void troca(int *a, int *b){
 	return;
 }
 
-void heapify(int a[], int size, int root) {
-	int f1 = 2*root + 1,
-	    f2 = 2*root + 2,
-	    maior = root;
-	
-	//Caso o filho um seja maior
-	if (a[f1] > a[maior] && f1 < size) maior = f1;
-	//Caso o filho dois seja maior
-	if (a[f2] > a[maior] && f2 < size) maior = f2;
-	
-	//Caso o maior n seja a raiz
-	if (maior != root) {
-		troca(&a[root], &a[maior]);
-		heapify(a, size, maior);
-	}
-	
-}
-
 void bubble_sort(int a[], int size) {
-	int i, tmp, swapped;
-	
+	int i, swapped;
 	do {
 		swapped = 0;
-		for (i = 0; i <= size - 2; i++) //Percorrer do início até o penultimo
+		for (i = 0; i <= size - 2; i++) { //Percorrer do início até o penultimo
+			comp += 1;
 			if (a[i] > a[i+1]) { //Caso esteja na ordem errada
-				tmp = a[i];
-				a[i] = a[i+1];
-				a[i+1] = tmp;
+				troca(&a[i], &a[i+1]);
 				swapped = 1;
 			}
+		}
 	} while (swapped); //Enquanto trocas tenham sido feitas
 }
 
 void cocktail_sort(int a[], int size) {
-	int i, tmp, swapped;
+	int i, swapped;
 	
 	do {
 		swapped = 0;
-		for (i = 0; i <= size - 2; i++) //Percorrer do início ao penutilmo
+		for (i = 0; i <= size - 2; i++) { //Percorrer do início ao penutilmo
+			comp += 1;
 			if (a[i] > a[i+1]) {
-				tmp = a[i];
-				a[i] = a[i+1];
-				a[i+1] = tmp;
+				troca(&a[i], &a[i+1]);
 				swapped = 1;
 			}
+		}
 		
 		if (!swapped) break; //Caso não haja trocas, parar
 		
 		swapped = 0;
-		for (i = size - 2; i >= 0; i--)
+		for (i = size - 2; i >= 0; i--) {
+			comp += 1;
 			if (a[i] > a[i+1]) {
-				tmp = a[i];
-				a[i] = a[i+1];
-				a[i+1] = tmp;
+				troca(&a[i], &a[i+1]);
 				swapped = 1;
 			}
+		}
 		
 	} while (swapped); //Enquanto trocas tenham sido feitas
 }
@@ -79,15 +59,41 @@ void selection_sort(int a[], int size) {
 	
 	for (j = 0; j < size - 1; j++) {
 		min = j;
+		atrib += 1;
 		for (i = j + 1; i < size; i++)
-			if (a[i] < a[min]) min = i;
+			comp += 1;
+			if (a[i] < a[min]) {
+				min = i;
+			}
 		
+		comp += 1;
 		if (a[min] < a[j]) {
-			tmp = a[min];
-			a[min] = a[j];
-			a[j] = tmp;
+			troca(&a[min], &a[j]);
 		}
 	}
+}
+
+void heapify(int a[], int size, int root) {
+	int f1 = 2*root + 1,
+	    f2 = 2*root + 2,
+	    maior = root;
+	
+	//Caso o filho um seja maior
+	comp += 1;
+	if (a[f1] > a[maior] && f1 < size) {
+		maior = f1;
+	}
+	//Caso o filho dois seja maior
+	comp += 1;
+	if (a[f2] > a[maior] && f2 < size) {
+		maior = f2;
+	}
+	
+	//Caso o maior n seja a raiz
+	if (maior != root) {
+		troca(&a[root], &a[maior]);
+		heapify(a, size, maior);
+	}	
 }
 
 void heap_sort(int a[], int size) {
@@ -252,15 +258,17 @@ int main(){
 			scanf("%d", &type);
 		}while(type < 1 || type > 4);
 		do{
-			printf("Digite um K entre 2 e 6 para o tamanho do vetor: 10^K\n");
+			printf("Digite um K entre 1 e 6 para o tamanho do vetor: 10^K\n");
 			scanf("%d", &k);
-		}while(k < 2 || k > 6);
+		}while(k < 1 || k > 6);
 		
 		//size=pow(10.0,k);
-		size=100;
-		for(i=2;i<k;i++)size*=10;
+		size=10;
+		for(i=1;i<k;i++)size*=10;
 		a = (int*)malloc(sizeof(int)*size);
 		for(i=0;i<5;i++){
+			atrib = 0;
+			comp = 0;
 			switch(type){
 				case 1:
 					init(a, size, 0, 5*size);
@@ -301,14 +309,10 @@ int main(){
 					quick(a, 0, size-1);
 					break;
 			}
-			if(i!=0){
-				atrib=atrib/2;
-				comp=comp/2;
-			}
-			printf("\nnumero de atribuicoes: %lld\nnumero de comparacoes: %lld\n", atrib, comp);
+			printf("\nNumero de atribuicoes: %lld\nNumero de comparacoes: %lld\n", atrib, comp);
 		}
-		atrib=0;
-		comp=0;
+		for(i=0; i < size; i++) printf("%d ",a[i]);
+		printf("\n");
 		printf("Digite:\n1 - para continuar\n0- para sair\n");
 		scanf("%d", &ex);
 	}while(ex);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
 #include "algoritmos.h"
 
 void init(int a[], int n, int step, int range) {
@@ -16,7 +16,7 @@ int main(){
 	int *a, alg, type, k, i;
 	float size;
 	do{
-		printf("Algoritmos de ordenacao\nEscolha o algoritmo:\n1-Bubblue Sort\n2-Sentinel Bubble Sort\n3-Cocktail sort\n4-Insertion Sort\n5-Selection Sort\n6-Merge Sort\n7-Heap Sort\n8-Quick Sort\n");
+		printf("Algoritmos de ordenacao\nEscolha o algoritmo:\n1-Bubble Sort\n2-Sentinel Bubble Sort\n3-Cocktail sort\n4-Insertion Sort\n5-Selection Sort\n6-Merge Sort\n7-Heap Sort\n8-Quick Sort\n");
 		scanf("%d", &alg);
 	}while(alg < 1 || alg > 8);
 	do{
@@ -24,14 +24,13 @@ int main(){
 		scanf("%d", &type);
 	}while(type < 1 || type > 4);
 	do{
-		printf("Digite um K entre 2 e 6 para o tamanho do vetor: 10^K\n");
+		printf("Digite um K entre 1 e 6 para o tamanho do vetor: 10^K\n");
 		scanf("%d", &k);
-	}while(k < 2 || k > 6);
+	}while(k < 1 || k > 6);
 	
-	//size=pow(10.0,k);
-	size=100;
-	for(i=2;i<k;i++)size*=10;
-	a = (int*)malloc(sizeof(int)*size);
+	size = 10;
+	for(i = 1; i < k; i++) size*=10;
+	a = (int*) malloc(sizeof(int) * size);
 	
 	switch(type){
 		case 1:
@@ -74,9 +73,7 @@ int main(){
 			break;
 	}
 	
-	for(i=0; i < size; i++){
-		printf("%d ",a[i]);
-	}
+	for(i=0; i < size; i++) printf("%d ",a[i]);
 	printf("\n");
 	return (0);
 }
