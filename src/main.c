@@ -1,80 +1,115 @@
+/*
+===================================
+Função principal.
+
+Trabalho 1 ICC2
+
+
+Leandro Satoshi - 10893103
+Gabriel Fontes  - 10856803
+===================================
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
+#include "funcoes.h"
 #include "algoritmos.h"
-
-int comp=0, atrib=0;
-
-void init(int a[], int n, int step, int range) {
-        int i;
-        for (i = 0; i < n; i++) {
-                int base = i * step;
-                int offset = rand() % range;
-                a[i] = base + offset;
-        }
-}
 
 int main(){
 	int *a, alg, type, k, i;
-	float size;
-	do{
-		printf("Algoritmos de ordenacao\nEscolha o algoritmo:\n1-Bubble Sort\n2-Sentinel Bubble Sort\n3-Cocktail sort\n4-Insertion Sort\n5-Selection Sort\n6-Merge Sort\n7-Heap Sort\n8-Quick Sort\n");
-		scanf("%d", &alg);
-	}while(alg < 1 || alg > 8);
-	do{
-		printf("Escolha o tipo de vetor:\n1-Aleatorio\n2-Quase ordenado\n3-Quase inversamente ordenado\n4-Muitos valores repetidos\n");
-		scanf("%d", &type);
-	}while(type < 1 || type > 4);
-	do{
-		printf("Digite um K entre 1 e 6 para o tamanho do vetor: 10^K\n");
-		scanf("%d", &k);
-	}while(k < 1 || k > 6);
+	double size;
 	
-	size = 10;
-	for(i = 1; i < k; i++) size*=10;
+	contagem cont;
+	cont.atr = 0;
+	cont.com = 0;
+	do{
+		printf("Algoritmos de ordenação. \n");
+		printf("Escolha o algoritmo: \n");
+		printf("1 - Bubble Sort \n");
+		printf("2 - Bubble Sort (Com sentinela) \n");
+		printf("3 - Cocktail Sort \n");
+		printf("4 - Insertion Sort \n");
+		printf("5 - Selection Sort \n");
+		printf("6 - Merge Sort \n");
+		printf("7 - Heap Sort \n");
+		printf("8 - Quick Sort \n");
+		printf("> ");
+		scanf("%d", &alg);
+	} while (alg < 1 || alg > 8);
+	
+	do{
+		printf("Escolha o tipo de vetor: \n");
+		printf("1 - Aleatorio \n");
+		printf("2 - Quase ordenado \n");
+		printf("3 - Quase inversamente ordenado \n");
+		printf("4 - Muitos valores repetidos \n");
+		printf("> ");
+		scanf("%d", &type);
+	} while (type < 1 || type > 4);
+	
+	do{
+		printf("Digite um K entre 2 e 6 para o tamanho do vetor: 10^K\n");
+		printf("> ");
+		scanf("%d", &k);
+	} while (k < 2 || k > 6);
+	size = pow(10, k);
+	
 	a = (int*) malloc(sizeof(int) * size);
 	
-	switch(type){
+	switch (type){
 		case 1:
-			init(a, size, 0, 5*size);
+			init (a, size, 0, 5*size);
 			break;
 		case 2:
-			init(a, size, 10, 100);
+			init (a, size, 10, 100);
 			break;
 		case 3:
-			init(a, size, -1, 100);
+			init (a, size, -1, 100);
 			break;
 		case 4:
-			init(a, size, 0, size/10);
+			init (a, size, 0, size/10);
 			break;
 	}
-	switch(alg){
+/*
+	printf("\n");
+	printf("Vetor inicial: \n");
+	for (i = 0; i < size; i++) printf("%i ", a[i]);
+	printf("\n\n");
+*/
+	switch (alg){
 		case 1:
-			bubble_sort(a, size);
+			cont = bubble_sort (a, size);
 			break;
 		case 2:
-			bubble_sent(a, size);
+			cont = 	bubble_sort_sent (a, size);
 			break;
 		case 3:
-			cocktail_sort(a, size);
+			cont = 	cocktail_sort (a, size);
 			break;
 		case 4:
-			insert(a, size);
+			cont = 	insertion_sort (a, size);
 			break;
 		case 5:
-			selection_sort(a, size);
+			cont = 	selection_sort(a, size);
 			break;
 		case 6:
-			merge_sort(a, 0, size-1);
+			cont = 	merge_sort(a, 0, size-1);
 			break;
 		case 7:
-			heap_sort(a, size);
+			cont = 	heap_sort(a, size);
 			break;
 		case 8:
-			quick(a, 0, size-1);
+			cont = 	quick_sort(a, 0, size-1);
 			break;
 	}
-	
-	printf("\nnumero de atribuicoes: %d\nnumero de comparacoes: %d", atrib, comp);
+/*	
+	printf("Vetor final: \n");
+	for (i = 0; i < size; i++) printf("%i ", a[i]);
+	printf("\n\n\n");
+*/	
+	printf("Número de comparações: %lli\n", cont.com);
+	printf("Número de atribuições: %lli\n", cont.atr);
 	return (0);
 }

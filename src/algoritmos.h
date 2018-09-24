@@ -1,19 +1,25 @@
+/*
+===================================
+Headers de algoritmos.c
+
+Trabalho 1 ICC2
+
+
+Leandro Satoshi - 10893103
+Gabriel Fontes  - 10856803
+===================================
+*/
+
 #ifndef ALGORITMOS_H_
 #define ALGORITMOS_H_
 
-void troca(int *a, int *b);
-void heapify(int a[], int size, int root);
-
-
-void bubble_sort(int a[], int size);
-void cocktail_sort(int a[], int size);
-void selection_sort(int a[], int size);
-void heap_sort(int a[], int size);
-//=====
-void insert(int a[], int size);
-void bubble_sent(int a[], int size);
-void merge(int a[], int l, int m, int r);
-void merge_sort(int a[], int l, int r);
-void quick(int a[], int inicio, int fim);
+contagem bubble_sort      (int a[], int size);
+contagem bubble_sort_sent (int a[], int size);
+contagem cocktail_sort    (int a[], int size);
+contagem insertion_sort   (int a[], int size);
+contagem selection_sort   (int a[], int size);
+contagem merge_sort       (int a[], int l, int r);
+contagem heap_sort        (int a[], int size);
+contagem quick_sort       (int a[], int inicio, int fim);
 
 #endif
