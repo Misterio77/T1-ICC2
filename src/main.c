@@ -18,12 +18,15 @@ Gabriel Fontes  - 10856803
 #include "algoritmos.h"
 
 int main(){
-	int *a, alg, type, k, i;
+	int *a, alg, type, k, j;
 	double size;
 	
 	contagem cont;
 	cont.atr = 0;
 	cont.com = 0;
+	
+	contagem media = cont;
+	
 	do{
 		printf("Algoritmos de ordenação. \n");
 		printf("Escolha o algoritmo: \n");
@@ -58,58 +61,66 @@ int main(){
 	
 	a = (int*) malloc(sizeof(int) * size);
 	
-	switch (type){
-		case 1:
-			init (a, size, 0, 5*size);
-			break;
-		case 2:
-			init (a, size, 10, 100);
-			break;
-		case 3:
-			init (a, size, -1, 100);
-			break;
-		case 4:
-			init (a, size, 0, size/10);
-			break;
+	for (j = 0; j < 5; j++) {
+		switch (type){
+			case 1:
+				init (a, size, 0, 5*size);
+				break;
+			case 2:
+				init (a, size, 10, 100);
+				break;
+			case 3:
+				init (a, size, -1, 100);
+				break;
+			case 4:
+				init (a, size, 0, size/10);
+				break;
+		}
+	/*
+		printf("\n");
+		printf("Vetor inicial: \n");
+		for (i = 0; i < size; i++) printf("%i ", a[i]);
+		printf("\n\n");
+	*/
+		switch (alg){
+			case 1:
+				cont = bubble_sort (a, size);
+				break;
+			case 2:
+				cont = 	bubble_sort_sent (a, size);
+				break;
+			case 3:
+				cont = 	cocktail_sort (a, size);
+				break;
+			case 4:
+				cont = 	insertion_sort (a, size);
+				break;
+			case 5:
+				cont = 	selection_sort(a, size);
+				break;
+			case 6:
+				cont = 	merge_sort(a, 0, size-1);
+				break;
+			case 7:
+				cont = 	heap_sort(a, size);
+				break;
+			case 8:
+				cont = 	quick_sort(a, 0, size-1);
+				break;
+		}
+	/*	
+		printf("Vetor final: \n");
+		for (i = 0; i < size; i++) printf("%i ", a[i]);
+		printf("\n\n\n");
+	*/	
+		printf("\n");
+		printf("Número de comparações (%i): %lli\n", j, cont.com);
+		printf("Número de atribuições (%i): %lli\n", j,  cont.atr);
+		media = contagem_somar(cont, media);
 	}
-/*
-	printf("\n");
-	printf("Vetor inicial: \n");
-	for (i = 0; i < size; i++) printf("%i ", a[i]);
-	printf("\n\n");
-*/
-	switch (alg){
-		case 1:
-			cont = bubble_sort (a, size);
-			break;
-		case 2:
-			cont = 	bubble_sort_sent (a, size);
-			break;
-		case 3:
-			cont = 	cocktail_sort (a, size);
-			break;
-		case 4:
-			cont = 	insertion_sort (a, size);
-			break;
-		case 5:
-			cont = 	selection_sort(a, size);
-			break;
-		case 6:
-			cont = 	merge_sort(a, 0, size-1);
-			break;
-		case 7:
-			cont = 	heap_sort(a, size);
-			break;
-		case 8:
-			cont = 	quick_sort(a, 0, size-1);
-			break;
-	}
-/*	
-	printf("Vetor final: \n");
-	for (i = 0; i < size; i++) printf("%i ", a[i]);
-	printf("\n\n\n");
-*/	
-	printf("Número de comparações: %lli\n", cont.com);
-	printf("Número de atribuições: %lli\n", cont.atr);
+	media = contagem_dividir(media, 5);
+	printf("\n--\n");
+	printf("Número de comparações (Média): %lli\n", media.com);
+	printf("Número de atribuições (Média): %lli\n", media.atr);
 	return (0);
 }
