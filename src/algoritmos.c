@@ -140,7 +140,7 @@ void bubble_sent(int a[], int size){
 	return;
 }
 
-void quickSort(int a[], int low, int high){
+void quick(int a[], int low, int high){
     int random,i,j,pivot;
     if (low < high) { //enquanto o inicio for menor que o fim
         random= low + rand() % (high - low); //escolhe um indice aleatorio
@@ -154,8 +154,8 @@ void quickSort(int a[], int low, int high){
             }
         }
         troca(&a[i+1],&a[high]); //joga o pivo pro fim da lista de menores que ele
-        quickSort(arr, low, i);//como o pivot eh o 1+1, chama recursivamente ate i e a partir de 1+2
-        quickSort(arr, i + 2, high);
+        quick(a, low, i);//como o pivot eh o 1+1, chama recursivamente ate i e a partir de 1+2
+        quick(a, i + 2, high);
     }
 }
 
@@ -169,7 +169,7 @@ void merge(int a[], int l, int m, int r) {
         L[i] = a[l + i];
     }
     for (j = 0; j < n2; j++){
-        R[j] = arr[m + 1+ j]; 
+        R[j] = a[m + 1+ j]; 
     }
     i = 0;
     j = 0;
@@ -198,11 +198,11 @@ void merge(int a[], int l, int m, int r) {
 } 
   
 
-void mergeSort(int arr[], int l, int r) { 
+void merge_sort(int a[], int l, int r) { 
     if (l < r) { 
         int m = l+(r-l)/2; 
-        mergeSort(arr, l, m); 
-        mergeSort(arr, m+1, r); 
-        merge(arr, l, m, r); 
+        merge_sort(a, l, m); 
+        merge_sort(a, m+1, r); 
+        merge(a, l, m, r); 
     } 
 } 
