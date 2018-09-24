@@ -1,0 +1,77 @@
+\chapter{Algoritmos}
+\label{chap:algoritmos}
+Os algoritmos aqui utilizados foram os oito primeiros a serem estudados e implementados nas aulas de introdução à ciência da computação II, sendo destes, cinco do tipo simples ou intuitivos, e outros três mais complexos e sofisticados.\\
+
+Abaixo estão um breve resumo de cada algoritmo bem como seus respectivos custos de tempo e memória na notação de O-grande(mais comumente conhecido como Big-O)
+
+Mais a frente os Big-O's dos algoritmos serão verificados com os dados dos testes.
+
+\section{Bubble Sort}
+\label{sec:bubble_sort}
+O algoritmo de bolha(ordenação por flutuação), mais conhecido como Bubble sort, é o algoritmo de ordenação mais simples de todos, e funciona trocando elementos adjacentes repetidamente de estiverem na ordem errada. Sempre iniciando no primeiro elemento do vetor e indo até o ultimo.
+\cite{GeeksforGeeksBubble}
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O(n)\\
+Gasto auxiliar de memoria:O(1)
+
+
+\section{Bubble Sort com Sentinela}
+\label{sec:bubble_sent}
+Bubble sort com sentinela é uma otimização do algoritmo citado anteriormente, e funciona adicionando um elemento sentinela para verificar onde houve a primeira interação de troca, assim sabe-se que até aquele ponto o vetor ja esta ordenado e não é necessario verificar todos elementos anteriores a ele.
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O(n)\\
+Gasto auxiliar de memoria:O(1)
+
+
+\section{Bubble Sort Cocktail Shaker}
+\label{sec:cocktail}
+Assim como a sentinela, Bubble com coquetel, conhecido também como cocktail sort, é uma variação/otimização do Bubble. Enquanto o tradicional sempre atravessa o vetor da esquerda para direita, o cocktail sort o faz em ambas as direções alternadamente.
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O(n)\\
+Gasto auxiliar de memoria:O(1)
+
+
+\section{Inserction Sort}
+\label{sec:inserction_sort}
+Insertion sort, ou ordenação por seleção, é um algoritmo que funciona da maneira que ordenamos cartas na mão, ou seja, pega um elemento e o insere na sua posição correta, arrastando outros para abrir espaço.
+\cite{GeeksforGeeksins}
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O(n)\\
+Gasto auxiliar de memoria:O(1)
+
+\section{Selection Sort}
+\label{sec:selection_sort}
+Selection sort, ou seleção, funciona buscando o menor elemento e o colocando no inicio do vetor não ordenado, assim ele mantém dois subvetores, um de ordenados e outro de não-ordenados.
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O($n^2$)\\
+Gasto auxiliar de memoria:O(1)
+
+\section{Merge Sort}
+\label{sec:merge_sort}
+Merge Sort, ou intercalação, funciona dividindo o problema em problemas menores, trabalhando com duas funções, uma que divide um vetor em dois menores e uma que intercala dois vetores ordenados em um unico. Como um vetor unitario é sempre ordenado, chamando recursivamente essas funções é possivel ordenar o vetor.
+
+\noindent Pior caso de tempo:O($n\log(n)$)\\
+Melhor caso de tempo:O($n\log(n)$)\\
+Gasto auxiliar de memoria:O(n)
+
+
+\section{Heap Sort}
+\label{sec:heap_sort}
+Heap sort é um algoritmo de ordenação baseado na estrutura binaria de Heap, uma vez com essa estrutura, é semelhante ao selection sort em encontrar o maior elemento e ordenar.
+
+\noindent Pior caso de tempo:O($n\log(n)$)\\
+Melhor caso de tempo:O($n\log(n)$)\\
+Gasto auxiliar de memoria:O(1)
+
+\section{Quick Sort}
+\label{sec:quick_sort}
+Quick sort, semelhante ao merge, divide o problema em parcelas menores, pegando um elemento como pivô, faz todos antes dele serem menores, e todos depois dele serem maiores, então repete o processo recursivamente.
+
+\noindent Pior caso de tempo:O($n^2$)\\
+Melhor caso de tempo:O($n\log(n)$)\\
+Gasto auxiliar de memoria:O(1)

@@ -1,0 +1,26 @@
+\chapter{Conclusão}
+\label{chap:conclusao}
+
+Como pode-se verificar com os testes realizados, não existe um algoritmo perfeito para todos os possiveis cenários, até mesmo os mais sofisticados e complexos são ultrapassados pelos simples em alguns casos específicos.
+
+Apesar deste resultado ambíguo, algumas ressalvas são importantes: Em um caso geral com vetores de tamanhos maiores $10^5$ a eficácia do Merge Sort, Heap Sort e Quick Sort sobre os demais é gigantesca, deixando extremamente frisado a diferença de um Big-O de O($n^2$) para o O($n\log(n))$ desses algoritmos.
+
+Dissertando mais especificamente sobre os resultos obtidos por cada algoritmo, primeiramente, sobre os algoritmos intuitivos:
+
+\begin{itemize}
+   \item Bubble sort e suas otimizações, bubble com sentinela e cocktail sort, todos funcionam de maneira semelhante, apesar de os dois ultimos trabalharem mais eficientemente, o resultado final não varia muito. Funciona muito bem para vetores quase ordenados, e não muito bem nos demais, possui um declinio muito grande na eficiencia com o aumento do vetor.
+   
+   \item O inserction sort em um caso geral possui em desempenho semelhante ao bubble, porém no caso de vetor quase ordenado possui o melhor desempenho entre todos aqui avaliados.
+   
+   \item Selection sort possui a mesma ordem que os demais intuitivos, porém possui o pior desempenho entre eles, para todos os casos. Seu unico ponto positivo é o baixo número de atribuições.
+   
+\end{itemize}
+   
+Por fim, os algoritmos mais sofisticados e seus pontos positivos e negativos:
+\begin{itemize}
+   \item Merge sort, o primeiro dos complexos aqui avaliados, possui O($n\log(n)$) sendo muito mais eficiente que os anteriores e possuindo um desempenho constante para todos os casos, se destacando um pouco mais no caso quase ordenado. Seu principal ponto negativo, apesar de não ser exibido pelos testes, é seu gasto de memória ser O(n), contra O(1) dos demais algoritmos.
+   
+   \item Heap sort, organiza o vetor no mesmo Big O que o merge, porém sem o ponto negativo de gasto extra de espaço. Algoritmo muito eficiente, tendo apenas um grande defeito, que é ser contante no tempo independente do tipo de vetor, o gasto é o mesmo.
+   
+   \item E por ultimo, quick sort, assim como os demais aqui avaliados, possui um desempelho excelente em seu caso geral, não necessitando de espaço extra como o merge, e se beneficiando mais da situação do vetor que o heap. Possui um pouco de dificuldade em vetores com muitos elementos repetidos, porém seu defeito esta no pior caso, que apesar de raro, o torna um algoritmo com complexidade de tempo O($n^2$).
+ \end{itemize}
