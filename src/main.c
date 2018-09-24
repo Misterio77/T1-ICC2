@@ -61,7 +61,7 @@ int main(){
 	
 	a = (int*) malloc(sizeof(int) * size);
 	
-	for (j = 0; j < 5; j++) {
+	for (j = 1; j <= 5; j++) {
 		switch (type){
 			case 1:
 				init (a, size, 0, 5*size);
